@@ -1,0 +1,23 @@
+{
+  "name": "portfolio-backend",
+  "version": "1.0.0",
+  "description": "Basic admin page for my portfolio.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicholascannon1/portfolio-backend.git"
+  },
+  "author": "Nicholas Cannon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicholascannon1/portfolio-backend/issues"
+  },
+  "homepage": "https://github.com/nicholascannon1/portfolio-backend#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.1"
+  }
+}
