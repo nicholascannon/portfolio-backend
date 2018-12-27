@@ -15,6 +15,18 @@ router.get('/', loggedIn, (req, res) => {
 });
 
 /**
+ * Settings route
+ */
+router.get('/settings', loggedIn, (req, res) => {
+  res.render('settigns');
+});
+
+// TODO: finish route
+router.post('/settings', loggedIn, (req, res) => {
+  res.redirect('/');
+});
+
+/**
  * Login route
  */
 router.get('/login', (req, res) => {

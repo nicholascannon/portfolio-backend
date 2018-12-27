@@ -15,6 +15,9 @@ app.set('port', 8000);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+// Connect to database
+require('./config/db').connect();
+
 // Middelware
 app.use(helmet());
 app.use(morgan('dev'));
@@ -22,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Mount Routes
-app.use('/api', require('./routes/api/index'));
+//app.use('/api', require('./routes/api/index'));
 app.use('/', require('./routes/admin/index'));
 
 // 404 handler
