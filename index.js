@@ -1,38 +1,48 @@
 /**
  * Portfolio-backend entry point.
+ * 
  * Written by Nicholas Cannon
  */
 const express = require('express');
 const path = require('path');
-const http = require('http');
 const helmet = require('helmet');
 const morgan = require('morgan');
 
 const app = express();
+const PORT = 8000;
 
-// Settings
-app.set('port', 8000);
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-// Connect to database
+/**
+ * Database setup
+ */
 require('./config/db').connect();
 
-// Middelware
+/**
+ * Middleware
+ */
 app.use(helmet());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Mount Routes
-//app.use('/api', require('./routes/api/index'));
-app.use('/', require('./routes/admin/index'));
+/**
+ * Mount API routes
+ */
+app.use('/api', require('./routes/contact'));
 
-// 404 handler
+/**
+ * 404 Handler
+ */
 app.use('*', (req, res) => {
   res.status(404).render('404', { test: 'it works' });
 });
 
-http.createServer(app).listen(app.get('port'), () => {
-  console.log(`Running on port ${app.get('port')}`);
+/**
+ * Error Handler
+ */
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+  res.json({ msg: err.message });
 });
+
+app.listen(PORT, () => console.log(`Listening on ${PORT}...`));

@@ -1,9 +1,9 @@
 /**
- * API for dealing with contact objects. The portfolio contact form 
- * reaches this API to create contact messages.
+ * API for dealing with contact objects.
+ * Written by Nicholas Cannon
  */
 const express = require('express');
-const Contact = require('../../models/Contact');
+const Contact = require('../models/Contact');
 const isValid = require('mongoose').Types.ObjectId.isValid;
 
 const router = express.Router();
@@ -34,14 +34,6 @@ router.delete('/delete', (req, res, next) => {
   } else {
     return next(new Error('Invalid Contact ID'));
   }
-});
-
-/**
- * API Error handler
- */
-router.use((err, req, res, next) => {
-  res.status(err.status || 500);
-  res.json({ msg: err.message });
 });
 
 module.exports = router;
