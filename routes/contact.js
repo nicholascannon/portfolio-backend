@@ -11,7 +11,7 @@ const router = express.Router();
 const contactsPerPage = 5;
 
 /**
- * Contact object pagination route.
+ * Contact object pagination route. This route is private.
  * METHOD: GET
  */
 router.get('/page/:page', loggedIn, (req, res, next) => {
@@ -34,6 +34,7 @@ router.get('/page/:page', loggedIn, (req, res, next) => {
 
 /**
  * Creates a new contact object and stores it in the database.
+ * This route is public.
  * METHOD: POST
  */
 router.post('/', (req, res, next) => {
@@ -54,7 +55,7 @@ router.post('/', (req, res, next) => {
 });
 
 /**
- * Deletes a Contact object by id.
+ * Deletes a Contact object by id. This route is private
  * METHOD: DELETE
  */
 router.delete('/:id', loggedIn, (req, res, next) => {

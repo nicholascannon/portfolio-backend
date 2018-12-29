@@ -14,6 +14,7 @@ const router = express.Router();
  * Login Route. 
  */
 router.post('/login', (req, res, next) => {
+  // Check if request is complete
   if (!req.body.password) {
     res.status(400);
     return next(new Error('Please supply a password'));

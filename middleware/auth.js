@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const secret = require('../config/globals').secret;
 
 /**
- * Checks if the attached jwt is valid
+ * Validates JWT attached to the Authorization header of a request.
  */
 function loggedIn (req, res, next) {
   try {
