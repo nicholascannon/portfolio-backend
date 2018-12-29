@@ -1,0 +1,11 @@
+hr {
+  margin-top: 0;
+}
+
+nav {
+  background-color: #fff;
+}
+
+#noMsg {
+  display: none;
+}
