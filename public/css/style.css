@@ -9,3 +9,7 @@ nav {
 #noMsg {
   display: none;
 }
+
+#contactsError {
+  display: none;
+}

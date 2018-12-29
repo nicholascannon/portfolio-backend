@@ -3,7 +3,7 @@ var PAGE = 1;
 
 function getContacts(page) {
   var cb = $('#contactsBoard');
-
+  
   // Pagination highlighting
   if (page > 1) {
     $('#prevLi').removeClass('disabled');
@@ -24,7 +24,7 @@ function getContacts(page) {
       }
     },
     error: function (data, status) {
-
+      $('#contactsError').show();
     }
   });
 }
