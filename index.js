@@ -34,7 +34,7 @@ app.use('/api', require('./routes/contact'));
  * 404 Handler
  */
 app.use('*', (req, res) => {
-  res.status(404).render('404', { test: 'it works' });
+  res.status(404).json({ msg: 'Page not found' });
 });
 
 /**
