@@ -5,6 +5,7 @@
 const express = require('express');
 const Contact = require('../models/Contact');
 const isValid = require('mongoose').Types.ObjectId.isValid;
+const loggedIn = require('../middleware/auth').loggedIn;
 
 const router = express.Router();
 const contactsPerPage = 5;
@@ -13,7 +14,7 @@ const contactsPerPage = 5;
  * Contact object pagination route.
  * METHOD: GET
  */
-router.get('/page/:page', (req, res, next) => {
+router.get('/page/:page', loggedIn, (req, res, next) => {
   let page = req.params.page;
 
   if (page < 1) {
@@ -35,7 +36,7 @@ router.get('/page/:page', (req, res, next) => {
  * Creates a new contact object and stores it in the database.
  * METHOD: POST
  */
-router.post('/', (req, res, next) => {
+router.post('/', loggedIn, (req, res, next) => {
   // Check if request is valid
   if (!req.body.email || !req.body.name || !req.body.message) {
     res.status(400);
@@ -56,7 +57,7 @@ router.post('/', (req, res, next) => {
  * Deletes a Contact object by id.
  * METHOD: DELETE
  */
-router.delete('/delete/:id', (req, res, next) => {
+router.delete('/delete/:id', loggedIn, (req, res, next) => {
   // Check if id is a valid mongo ObjectId
   if (isValid(req.params.id)) {
     Contact.findByIdAndDelete(req.params.id, (err, contact) => {
