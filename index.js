@@ -28,7 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 /**
  * Mount API routes
  */
-app.use('/api', require('./routes/contact'));
+app.use('/api/contact', require('./routes/contact'));
+app.use('/api/auth', require('./routes/auth'));
 
 /**
  * 404 Handler

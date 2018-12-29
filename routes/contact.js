@@ -1,5 +1,5 @@
 /**
- * API for dealing with contact objects.
+ * Contact object routes. /api/contact
  * Written by Nicholas Cannon
  */
 const express = require('express');
@@ -13,7 +13,7 @@ const contactsPerPage = 5;
  * Contact object pagination route.
  * METHOD: GET
  */
-router.get('/contact/page/:page', (req, res, next) => {
+router.get('/page/:page', (req, res, next) => {
   let page = req.params.page;
 
   if (page < 1) {
@@ -35,7 +35,7 @@ router.get('/contact/page/:page', (req, res, next) => {
  * Creates a new contact object and stores it in the database.
  * METHOD: POST
  */
-router.post('/contact', (req, res, next) => {
+router.post('/', (req, res, next) => {
   // Check if request is valid
   if (!req.body.email || !req.body.name || !req.body.message) {
     res.status(400);
