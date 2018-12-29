@@ -7,6 +7,7 @@ const express = require('express');
 const globals = require('../config/globals');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const loggedIn = require('../middleware/auth').loggedIn;
 
 const router = express.Router();
 
@@ -32,6 +33,13 @@ router.post('/login', (req, res, next) => {
       res.status(401).json({ msg: 'Invalid password' });
     }
   });
+});
+
+/**
+ * Validates a JWT attached to Authorization header.
+ */
+router.get('/validate', loggedIn, (req, res) => {
+  res.status(200).json({ valid: true });
 });
 
 module.exports = router;
