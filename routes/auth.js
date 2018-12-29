@@ -20,10 +20,10 @@ router.post('/login', (req, res, next) => {
   }
 
   // Compare passwords
-  bcrypt.compare(req.body.password, globals.admin.password, (err, res) => {
+  bcrypt.compare(req.body.password, globals.admin.password, (err, valid) => {
     if (err) return next(new Error(err));
     
-    if (res) {
+    if (valid) {
       // Password is correct
       const token = jwt.sign({ user: 'admin' }, globals.secret, { expiresIn: '7d' });
       res.status(200).json({ token });

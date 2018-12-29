@@ -8,11 +8,11 @@ const secret = require('../config/globals').secret;
  * Checks if the attached jwt is valid
  */
 function loggedIn (req, res, next) {
-  if (jwt.verify(req.get('authentication'), secret)) {
-    next();
-  } else {
-    res.status(403);
-    next(new Error('Invalid token supplied. Please login'));
+  try {
+    let decoded = jwt.verify(req.get('Authorization'), secret, { maxAge: '7d' });
+    if (decoded) next();
+  } catch(err) {
+    res.status(401).json({ msg: 'Invalid Token' });
   }
 }
 

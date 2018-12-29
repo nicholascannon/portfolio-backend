@@ -36,7 +36,7 @@ router.get('/page/:page', loggedIn, (req, res, next) => {
  * Creates a new contact object and stores it in the database.
  * METHOD: POST
  */
-router.post('/', loggedIn, (req, res, next) => {
+router.post('/', (req, res, next) => {
   // Check if request is valid
   if (!req.body.email || !req.body.name || !req.body.message) {
     res.status(400);
@@ -57,7 +57,7 @@ router.post('/', loggedIn, (req, res, next) => {
  * Deletes a Contact object by id.
  * METHOD: DELETE
  */
-router.delete('/delete/:id', loggedIn, (req, res, next) => {
+router.delete('/:id', loggedIn, (req, res, next) => {
   // Check if id is a valid mongo ObjectId
   if (isValid(req.params.id)) {
     Contact.findByIdAndDelete(req.params.id, (err, contact) => {
