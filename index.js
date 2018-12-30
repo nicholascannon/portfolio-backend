@@ -26,6 +26,15 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 /**
+ * Enable CORS for all resources on the server
+ */
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+/**
  * Mount API routes
  */
 app.use('/api/contact', require('./routes/contact'));
