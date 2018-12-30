@@ -35,7 +35,7 @@ function buildContactCard(contact) {
       <a href="mailto:${contact.email}" class="card-link text-primary" role="button" target="_blank">Reply</a>
       <a href="" onclick="return deleteContact('${contact._id}')" class="card-link text-danger" role="button">Delete</a>
     </div>
-    <div class="card-footer text-muted">${contact.date.toString()}</div>
+    <div class="card-footer text-muted">${new Date(contact.date).toLocaleString()}</div>
   </div>`;
 }
 
