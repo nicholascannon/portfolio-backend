@@ -1,12 +1,13 @@
 var TOKEN = localStorage.getItem('xsffncToken');
 var PAGE = 1;
+var API_HOST = 'http://localhost:8000';
 
 /**
  * Deletes contact object by id
  */
 function deleteContact(id) {
   $.ajax({
-    url: 'http://localhost:8000/api/contact/'+id,
+    url: API_HOST+'/api/contact/'+id,
     headers: { 'Authorization':  TOKEN},
     type: 'DELETE',
     success: function(data, status) {
@@ -54,7 +55,7 @@ function getContacts(page) {
   }
 
   $.ajax({
-    url: 'http://localhost:8000/api/contact/page/'+page,
+    url: API_HOST+'/api/contact/page/'+page,
     headers: { 'Authorization':  TOKEN},
     success: function (data, status) {
       
