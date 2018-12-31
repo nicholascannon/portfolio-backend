@@ -1,6 +1,6 @@
 var TOKEN = localStorage.getItem('xsffncToken');
 var PAGE = 1;
-var API_HOST = 'http://localhost:8000';
+var API_HOST = 'http://localhost:8080';
 
 /**
  * Deletes contact object by id

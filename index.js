@@ -9,7 +9,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 
 const app = express();
-const PORT = 8000;
+const PORT = 8080;
 
 /**
  * Database setup

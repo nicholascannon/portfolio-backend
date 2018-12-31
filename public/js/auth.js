@@ -1,4 +1,4 @@
-var API_HOST = 'http://localhost:8000';
+var API_HOST = 'http://localhost:8080';
 
 if (!localStorage.getItem('xsffncToken')) {
   window.location.replace('/login');
