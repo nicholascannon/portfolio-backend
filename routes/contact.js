@@ -24,6 +24,7 @@ router.get('/page/:page', loggedIn, (req, res, next) => {
 
   Contact
     .find()
+    .sort({ date: 'desc' })
     .skip((contactsPerPage*page)-contactsPerPage)
     .limit(contactsPerPage)
     .exec((err, contacts) => {

@@ -13,3 +13,8 @@ nav {
 #contactsError {
   display: none;
 }
+
+/* Puts the nav-links inline */
+.navbar-nav { 
+  flex-direction: row;
+}

@@ -86,6 +86,9 @@ $('document').ready(function() {
     localStorage.removeItem('xsffncToken');
     window.location.replace('/login');
   });
+  $('#refreshButton').click(function() {
+    getContacts(PAGE);
+  });
   $('#prevPage').click(function() { 
     PAGE--;
     getContacts(PAGE);
